@@ -18,7 +18,7 @@ Execute in the root directory to deploy micro-services:
 $ docker-compose up --build
 ```
 
-Navigate to [http://http://localhost:8761](http://http://localhost:8761) to see registry of micro-services.
+Navigate to [http://localhost:8761](http://localhost:8761) to see registry of micro-services.
 
 ## Contributor
 * Anthony GODIN <gdn.anthony@gmail.com>
