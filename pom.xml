@@ -14,5 +14,6 @@
         <module>monitoring</module>
         <module>registry</module>
         <module>gateway</module>
+        <module>aiPlayer-service</module>
     </modules>
 </project>

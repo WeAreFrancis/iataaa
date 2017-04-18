@@ -28,3 +28,7 @@ services:
     ports:
       - 9000:8080
       - 8989:8989
+
+  aiplayer-service:
+    build: aiPlayer-service
+    restart: always

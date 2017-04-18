@@ -16,5 +16,12 @@ zuul:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
 
+  routes:
+    aiPlayer-service:
+        path: /ai-player/**
+        serviceId: aiPlayer-service
+        stripPrefix: false
+        sensitiveHeaders:
+
 server:
   port: 4000

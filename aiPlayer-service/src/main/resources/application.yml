@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: aiplayer-service
+  rabbitmq:
+    host: rabbitmq
+
+server:
+  context-path: /ai-player
+  port: 6000
+
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://registry:8761/eureka/
+
