@@ -1,0 +1,30 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 15672:15672
+
+  config:
+    build: config
+    restart: always
+
+  registry:
+    build: registry
+    restart: always
+    ports:
+      - 8761:8761
+
+  gateway:
+    build: gateway
+    restart: always
+    ports:
+      - 80:4000
+
+  monitoring:
+    build: monitoring
+    restart: always
+    ports:
+      - 9000:8080
+      - 8989:8989
