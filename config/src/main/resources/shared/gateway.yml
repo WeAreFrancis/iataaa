@@ -1,27 +1,19 @@
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 20000
-
 ribbon:
-  ReadTimeout: 20000
-  ConnectTimeout: 20000
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
 
 zuul:
   ignoredServices: '*'
   host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
 
   routes:
-    aiPlayer-service:
-        path: /ai-player/**
-        serviceId: aiPlayer-service
+    aiplayer-service:
+        path: /aiplayer-service/**
+        serviceId: aiplayer-service
         stripPrefix: false
         sensitiveHeaders:
 
 server:
-  port: 4000
+  port: 8080

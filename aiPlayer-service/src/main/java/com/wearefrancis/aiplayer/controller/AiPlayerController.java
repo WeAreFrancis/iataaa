@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("api/aiPlayers")
+@RequestMapping("players")
 public class AiPlayerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AiPlayerController.class);

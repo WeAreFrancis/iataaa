@@ -1,34 +1,63 @@
 version: '2'
-services:
-  rabbitmq:
-    image: rabbitmq:3-management
-    restart: always
-    ports:
-      - 15672:15672
 
-  config:
-    build: config
+networks:
+  common:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.0.0/24
+        gateway: 172.16.0.1
+
+services:
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: iataaa
+      MYSQL_USER: iataaa
+      MYSQL_PASSWORD: password
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.10
+    ports:
+      - "3306"
 
   registry:
     build: registry
     restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.30
     ports:
-      - 8761:8761
+      - "8761"
+
+  config:
+    build: config
+    restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.40
+    ports:
+      - "8888"
 
   gateway:
     build: gateway
     restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.50
     ports:
-      - 80:4000
-
-  monitoring:
-    build: monitoring
-    restart: always
-    ports:
-      - 9000:8080
-      - 8989:8989
+      - "8080"
 
   aiplayer-service:
     build: aiPlayer-service
     restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.20
+    ports:
+      - "8081"

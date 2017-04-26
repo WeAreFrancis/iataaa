@@ -1,0 +1,12 @@
+server:
+  context-path: /aiplayer-service
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql/iataaa?useSSL=false
+    username: iataaa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update

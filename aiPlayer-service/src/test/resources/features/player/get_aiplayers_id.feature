@@ -7,7 +7,7 @@ Feature: Get player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to GET right player.
-    When I set a "GET" request to "/api/aiPlayers/0a"
+    When I set a "GET" request to "/players/0a"
     And I send the request
     Then the response status code is 200
     And the aiPlayers data database is:
@@ -25,7 +25,7 @@ Feature: Get player
 
 
   Scenario: I make call to GET non-existent player.
-    When I set a "GET" request to "/api/aiPlayers/incorrectId"
+    When I set a "GET" request to "/players/incorrectId"
     And I send the request
     Then the response status code is 404
     And the aiPlayers data database is:

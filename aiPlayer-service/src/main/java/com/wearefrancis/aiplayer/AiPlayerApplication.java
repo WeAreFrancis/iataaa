@@ -2,18 +2,11 @@ package com.wearefrancis.aiplayer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
-@EnableConfigurationProperties
-@Configuration
+@EnableEurekaClient
 public class AiPlayerApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AiPlayerApplication.class, args);
     }

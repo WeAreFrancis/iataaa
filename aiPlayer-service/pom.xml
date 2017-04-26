@@ -29,7 +29,6 @@
     </properties>
 
     <dependencies>
-
         <!-- SPRING CLOUD -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -44,8 +43,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
-
-
 
         <!-- SPRING BOOT -->
         <dependency>
