@@ -11,9 +11,11 @@ You can manage artificial intelligence informations like its ip, port, difficult
 
 ### API Gateway 
 Expose (future) multiple services to client. It accessible on http://172.16.0.50:8080.
-| Service | Location |
-| ------ | ------ |
-| Aiplayer-service | http://172.16.0.50:8080/aiplayer-service/players|
+
+Service | Location
+------ | ------ 
+Aiplayer-service | http://172.16.0.50:8080/aiplayer-service/players |
+
 
 ### Registry
 Locate services for the purpose of load balancing and failover of middle-tier servers. We use [Eureka](https://github.com/Netflix/eureka).
