@@ -79,21 +79,20 @@ public class AiPlayerSteps extends AbstractSteps {
             int port = Integer.valueOf(map.get("port"));
             String path = map.get("path");
 
-            if (id == null)
-                aiPlayerIsInDatabase(difficulty, name, token, ip, port, path);
+            if (id == null &&  token == null)
+                aiPlayerIsInDatabase(difficulty, name, ip, port, path);
             else
                 aiPlayerIsInDatabase(id, difficulty, name, token, ip, port, path);
         });
     }
 
     private void aiPlayerIsInDatabase(
-            Difficulty difficulty, String name, String token, String ip, int port, String path
+            Difficulty difficulty, String name, String ip, int port, String path
     ) {
         AiPlayer aiPlayer = entityManager.createQuery(
                 "SELECT l FROM AiPlayer l WHERE " +
                         "l.difficulty = :difficulty " +
                         "AND l.name = :name " +
-                        "AND l.token = :token " +
                         "AND l.ip = :ip " +
                         "AND l.port = :port " +
                         "AND l.path = :path "
@@ -101,7 +100,6 @@ public class AiPlayerSteps extends AbstractSteps {
 
                 .setParameter("difficulty", difficulty)
                 .setParameter("name", name)
-                .setParameter("token", token)
                 .setParameter("ip", ip)
                 .setParameter("port", port)
                 .setParameter("path", path)

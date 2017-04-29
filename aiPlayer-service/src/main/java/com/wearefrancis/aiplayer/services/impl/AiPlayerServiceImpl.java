@@ -1,6 +1,7 @@
 package com.wearefrancis.aiplayer.services.impl;
 
 import com.wearefrancis.aiplayer.domain.AiPlayer;
+import com.wearefrancis.aiplayer.domain.Player;
 import com.wearefrancis.aiplayer.dto.entity.AiPlayerDTOToRead;
 import com.wearefrancis.aiplayer.dto.entity.AiPlayerDTOToWrite;
 import com.wearefrancis.aiplayer.dto.mapper.AiPlayerMapper;
@@ -55,9 +56,9 @@ public class AiPlayerServiceImpl implements AiPlayerService {
     }
 
     @Override
-    public AiPlayerDTOToRead getById(String id) throws NotFoundException {
-        AiPlayer aiPlayer = Optional.ofNullable(aiPlayerRepository.findOne(id))
-                .orElseThrow(() -> new NotFoundException("id", id, "Player"));
+    public AiPlayerDTOToRead getById(String playerId) throws NotFoundException {
+        AiPlayer aiPlayer = Optional.ofNullable(aiPlayerRepository.findOne(playerId))
+                .orElseThrow(() -> new NotFoundException("id", playerId, "Player"));
         LOGGER.info("Player is found : {}", aiPlayer);
         return AiPlayerMapper.modelToReadDTO(aiPlayer);
     }
@@ -72,15 +73,10 @@ public class AiPlayerServiceImpl implements AiPlayerService {
     }
 
     @Override
-    public AiPlayerDTOToRead update(String id, AiPlayerDTOToWrite aiPlayerToUpdateDTO) throws NotFoundException {
-        if (!aiPlayerRepository.exists(id)) {
-            throw new NotFoundException("id", id, "Player");
-        }
-        AiPlayer aiPlayer = AiPlayerMapper.writeDTOToModel(aiPlayerToUpdateDTO);
-        aiPlayer.setId(id);
-        aiPlayer = aiPlayerRepository.save(aiPlayer);
-        LOGGER.info("Player is updated : {}", aiPlayer);
-        return AiPlayerMapper.modelToReadDTO(aiPlayer);
+    public AiPlayerDTOToRead update(String playerId, AiPlayerDTOToWrite aiPlayerDTOToWrite) throws NotFoundException {
+        AiPlayer player = aiPlayerRepository.findById(playerId)
+                .orElseThrow(() -> new NotFoundException("id", playerId, "Player"));
+        return save(player, aiPlayerDTOToWrite);
     }
 
     // PRIVATE
@@ -92,5 +88,17 @@ public class AiPlayerServiceImpl implements AiPlayerService {
             dtos.add(aiPlayerDTOToRead);
         });
         return dtos;
+    }
+
+    private AiPlayerDTOToRead save(AiPlayer aiPlayer, AiPlayerDTOToWrite playerDTO) {
+        aiPlayer.setDifficulty(playerDTO.getDifficulty());
+        aiPlayer.setIp(playerDTO.getIp());
+        aiPlayer.setName(playerDTO.getName());
+        aiPlayer.setPath(playerDTO.getPath());
+        aiPlayer.setPort(playerDTO.getPort());
+
+        aiPlayerRepository.save(aiPlayer);
+        LOGGER.info("Player is updated : {}", aiPlayer);
+        return AiPlayerMapper.modelToReadDTO(aiPlayer);
     }
 }

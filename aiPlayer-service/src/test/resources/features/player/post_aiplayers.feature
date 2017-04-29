@@ -19,15 +19,14 @@ Feature: Add aiPlayers
     And the response body matches :
       | difficulty | HARD      |
       | name       | ia1       |
-      | token      | toto      |
       | ip         | 127.0.0.1 |
       | port       | 8080      |
       | path       | api       |
     And the aiPlayers data database is:
-      | difficulty | name | token | ip        | port | path |
-      | HARD       | ia1  | toto  | 127.0.0.1 | 8080 | api  |
+      | difficulty | name | ip        | port | path |
+      | HARD       | ia1  | 127.0.0.1 | 8080 | api  |
 
-  Scenario: I make call to POST /aiPlayers without path in json..
+  Scenario: I make call to POST /aiPlayers without path in json.
     When I set a "POST" request to "/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
@@ -45,7 +44,6 @@ Feature: Add aiPlayers
     And the response body matches :
       | difficulty | HARD      |
       | name       | ia1       |
-      | token      | toto      |
       | ip         | 127.0.0.1 |
       | port       | 8080      |
 

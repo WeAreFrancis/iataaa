@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Data
 @javax.persistence.Entity
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public abstract class Player extends Entity {
 
     public Player() {
-        this.token = "toto";
+        this.token = UUID.randomUUID().toString();
     }
 
     @NotNull
