@@ -6,18 +6,20 @@
 </template>
 
 <script>
-  import Navbar from './components/Navbar';
-
-export default {
+  import Navbar from './components/Navbar'
+  export default {
     name: 'app',
     components: {
-      'nav-bar': Navbar,
+      'nav-bar': Navbar
     },
-};
+    methods: {
+      openModal () {
+        $('.ui.modal').modal('show')
+      }
+    }
+  }
 </script>
 
-<style>
-body {
-  padding-top: 3rem;
-}
+<style lang="less">
+  @import 'styles/iataaa';
 </style>

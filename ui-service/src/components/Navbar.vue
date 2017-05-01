@@ -1,28 +1,28 @@
 <template>
-  <div class="nav-bar">
-    <nav>
-      <div id="title-block">
-        <span>Iataaa</span>
-      </div>
+  <nav>
+    <div class="nav-bar-section">
+      <h1>Iataaa</h1>
+    </div>
+    <div class="nav-bar-section">
       <ul>
         <li>
-          <a href="/checkers" class="disabled">
+          <a href="#" class="disabled">
             Checkers
           </a>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 
   export default {
-    name: 'nav-bar',
-  };
+    name: 'nav-bar'
+  }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
   nav {
     background-color: #333;
     color: white;
@@ -33,7 +33,11 @@
     z-index: 1030;
   }
 
-  #title-block {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .nav-bar-section {
     display: inline-block;
     padding: 5px;
     margin: 5px;
@@ -41,18 +45,21 @@
 
   ul {
     display: inline-block;
+    padding: 0;
   }
 
   li {
     list-style-type: none;
   }
+
   a {
     text-decoration: none;
+    color: white;
   }
-
   .disabled {
     color: rgba(255,255,255,.25);
     cursor: not-allowed;
   }
+
 
 </style>
