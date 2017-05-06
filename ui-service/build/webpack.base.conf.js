@@ -24,7 +24,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'semantic': resolve('static/semantic/dist/semantic.js')
+      'semantic': resolve('semantic/dist/semantic.js')
     }
   },
   module: {

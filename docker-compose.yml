@@ -26,15 +26,6 @@ services:
     ports:
       - "3306"
 
-  registry:
-    build: registry
-    restart: always
-    networks:
-      common:
-        ipv4_address: 172.16.0.30
-    ports:
-      - "8761"
-
   config:
     build: config
     restart: always
@@ -44,12 +35,26 @@ services:
     ports:
       - "8888"
 
+  registry:
+    build: registry
+    restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.30
+    depends_on:
+      - config
+    ports:
+      - "8761"
+
   gateway:
     build: gateway
     restart: always
     networks:
       common:
         ipv4_address: 172.16.0.50
+    depends_on:
+      - config
+      - registry
     ports:
       - "8080"
 
@@ -59,5 +64,19 @@ services:
     networks:
       common:
         ipv4_address: 172.16.0.20
+    depends_on:
+      - mysql
+      - config
+      - registry
     ports:
       - "8081"
+
+  ui-service:
+    command: sh -c "gulp --cwd=semantic build && npm run dev"
+    restart: always
+    build: ui-service
+    networks:
+      common:
+        ipv4_address: 172.16.0.55
+    ports:
+      - "8080"

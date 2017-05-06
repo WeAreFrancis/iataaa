@@ -1,5 +1,5 @@
 {
-  "base": "static/semantic/",
+  "base": "semantic",
   "paths": {
     "source": {
       "config": "src/theme.config",
@@ -8,15 +8,14 @@
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "dist/",
+      "packaged": "../src/assets/ui/",
       "uncompressed": "dist/components/",
       "compressed": "dist/components/",
-      "themes": "dist/themes/"
+      "themes": "../src/assets/ui/themes/"
     },
-    "clean": "dist/"
+    "clean": "../src/assets/ui/"
   },
   "permission": false,
-  "autoInstall": false,
-  "rtl": false,
-  "version": "2.2.10"
+  "autoInstall": true,
+  "rtl": false
 }
