@@ -16,16 +16,13 @@
 </template>
 
 <script>
-
   export default {
     name: 'nav-bar'
   }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
   nav {
-    background-color: #333;
-    color: white;
     position: fixed;
     top: 0;
     right: 0;
@@ -56,10 +53,4 @@
     text-decoration: none;
     color: white;
   }
-  .disabled {
-    color: rgba(255,255,255,.25);
-    cursor: not-allowed;
-  }
-
-
 </style>

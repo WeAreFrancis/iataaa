@@ -1,49 +1,27 @@
 <template>
-  <div class="game">
-    <h1>Game</h1>
-    <button class="ui primary button" v-on:click="openModal">Click Me</button>
-    <div class="ui modal">
-      <i class="close icon"></i>
-      <div class="header">
-        Profile Picture
-      </div>
-      <div class="image content">
-        <div class="ui medium image">
-          <img src="../assets/logo.png">
-        </div>
-        <div class="description">
-          <div class="ui header">We've auto-chosen a profile image for you.</div>
-          <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-          <p>Is it okay to use this photo?</p>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="ui black deny button">
-          Nope
-        </div>
-        <div class="ui positive right labeled icon button">
-          Yep, that's me
-          <i class="checkmark icon"></i>
-        </div>
-      </div>
-    </div>
-
-
+  <div id="game">
+    <players id="players"></players>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'game',
-  methods: {
-    openModal () {
-      $('.ui.modal').modal('show')
-    }
+  import Players from './Players'
+  export default {
+    components: {Players},
+    name: 'game'
   }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
+  @import '../styles/variables';
+
+  #game {
+    height: 100%;
+  }
+
+  #players {
+    background-color: @third-background-color;
+    color: @third-color;
+  }
 
 </style>
