@@ -3,15 +3,6 @@
     <div class="nav-bar-section">
       <h1>Iataaa</h1>
     </div>
-    <div class="nav-bar-section">
-      <ul>
-        <li>
-          <a href="#" class="disabled">
-            Checkers
-          </a>
-        </li>
-      </ul>
-    </div>
   </nav>
 </template>
 
@@ -28,21 +19,21 @@
     right: 0;
     left: 0;
     z-index: 1030;
+    display: flex;
   }
 
   h1 {
     font-size: 1.8rem;
+    margin: 0
   }
 
   .nav-bar-section {
-    display: inline-block;
-    padding: 5px;
-    margin: 5px;
+    margin: auto 10px auto 10px;
   }
 
   ul {
-    display: inline-block;
     padding: 0;
+    margin: 0;
   }
 
   li {

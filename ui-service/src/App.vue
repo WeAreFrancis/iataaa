@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <nav-bar id="nav-bar"></nav-bar>
     <router-view class="main-component"></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -11,11 +11,6 @@
     name: 'app',
     components: {
       'nav-bar': Navbar
-    },
-    methods: {
-      openModal () {
-        $('.ui.modal').modal('show')
-      }
     }
   }
 </script>

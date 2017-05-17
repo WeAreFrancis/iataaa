@@ -3,7 +3,7 @@ export class Player {
     this.id = id
     this.name = name
     this.ip = ip
-    this.port = port
+    this.port = Number(port)
     this.path = path
     this.difficulty = difficulty
     this.token = token

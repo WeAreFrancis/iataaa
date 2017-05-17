@@ -22,6 +22,7 @@
   #players {
     background-color: @third-background-color;
     color: @third-color;
+    width: 250px;
   }
 
 </style>
