@@ -1,11 +1,11 @@
 <template>
   <div id="game">
-    <players id="players"></players>
+    <players id="toolBar"></players>
   </div>
 </template>
 
 <script>
-  import Players from './Players'
+  import Players from './ToolBar'
   export default {
     components: {Players},
     name: 'game'
@@ -19,7 +19,7 @@
     height: 100%;
   }
 
-  #players {
+  #toolBar {
     background-color: @third-background-color;
     color: @third-color;
     width: 250px;
