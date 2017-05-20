@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("players")
+@CrossOrigin(origins = "*")
 public class AiPlayerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AiPlayerController.class);
