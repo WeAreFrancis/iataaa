@@ -9,7 +9,6 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
   import PlayerForm from './utils/form/PlayerForm'
   import PlayersTab from './PlayersTab'
   export default {
@@ -17,13 +16,7 @@
       PlayersTab,
       PlayerForm
     },
-    name: 'tool-bar',
-    mounted: function () {
-      this.loadPlayers()
-    },
-    methods: {
-      ...mapActions(['loadPlayers'])
-    }
+    name: 'tool-bar'
   }
 </script>
 

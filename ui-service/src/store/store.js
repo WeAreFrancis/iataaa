@@ -42,8 +42,8 @@ const actions = {
       .then(response => commit('DELETE_PLAYER', player))
       .catch(error => commit('API_FAILURE', error))
   },
-  loadPlayers: ({ commit }) => {
-    return api.get(AI_PLAYER_API)
+  loadPlayers: ({ commit }, pageNb) => {
+    return api.get(AI_PLAYER_API + '?page=' + pageNb)
       .then(response => commit('LOAD_PLAYERS', response.body))
       .catch(error => commit('API_FAILURE', error))
   },

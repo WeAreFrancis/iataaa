@@ -1,15 +1,20 @@
 <template>
   <div class="app">
     <nav-bar id="nav-bar"></nav-bar>
-    <router-view class="main-component"></router-view>
+    <div id="content">
+      <tool-bar id="toolBar"></tool-bar>
+      <router-view class="main-component"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
   import Navbar from './components/Navbar'
+  import ToolBar from './components/ToolBar'
   export default {
     name: 'app',
     components: {
+      ToolBar,
       'nav-bar': Navbar
     }
   }
@@ -23,13 +28,19 @@
     height: 100%;
   }
 
+  #content {
+    padding-top: @nav-bar-height;
+  }
+
   #nav-bar {
     background-color: @secondary-background-color;
     color: @secondary-color;
     height: @nav-bar-height;
   }
 
-  .main-component {
-    padding-top: @nav-bar-height;
+  #toolBar {
+    background-color: @third-background-color;
+    color: @third-color;
+    width: 250px;
   }
 </style>

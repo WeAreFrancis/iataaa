@@ -38,6 +38,11 @@
           </md-list-item>
         </md-list>
       </div>
+      <pagination :currentPage="currentPage"
+                  :totalPages="totalPages"
+                  @onClickPage="onClickPage($event)"
+      >
+      </pagination>
     </md-tab>
 
     <!-- DIALOG -->
@@ -71,8 +76,10 @@
   import PlayerForm from './utils/form/PlayerForm'
   import {DIALOG_TYPE} from '../utils/constants'
   import {PlayerToWrite} from '../entities/playerToWrite'
+  import Pagination from './Pagination'
   export default {
     components: {
+      Pagination,
       PlayerForm
     },
     name: 'players-tab',
@@ -94,6 +101,9 @@
         }
       }
     },
+    mounted: function () {
+      this.loadPlayers(0)
+    },
     computed: {
       confirm () {
         return {
@@ -103,28 +113,35 @@
           cancel: 'Cancel'
         }
       },
+      currentPage () {
+        return this.players.number
+      },
       playersNb () {
         return this.players.totalElements
+      },
+      totalPages () {
+        return this.players.totalPages
       }
     },
     methods: {
-      ...mapActions(['createPlayer', 'deletePlayer', 'updatePlayer']),
+      ...mapActions(['createPlayer', 'deletePlayer', 'loadPlayers', 'updatePlayer']),
+      closeDialog (ref) {
+        this.$refs[ref].close()
+      },
+      initializeSelectedPlayer () {
+        this.selectedPlayer = {
+          name: '',
+          ip: '',
+          port: 0,
+          path: null,
+          difficulty: ''
+        }
+      },
       onClickAddPlayer () {
         this.playerDialog.title = 'Create player'
         this.playerDialog.confirm = 'Create player'
         this.playerDialog.type = DIALOG_TYPE.CREATION
         this.initializeSelectedPlayer()
-        this.openDialog(this.playerDialog.name)
-      },
-      onClickDeletePlayer (player) {
-        this.selectedPlayer = player
-        this.openDialog('confirmDialog')
-      },
-      onClickEditPlayer (player) {
-        this.playerDialog.title = 'Edit player'
-        this.playerDialog.confirm = 'Edit ' + player.name
-        this.playerDialog.type = DIALOG_TYPE.EDITION
-        this.selectedPlayer = player
         this.openDialog(this.playerDialog.name)
       },
       onClickConfirmPlayerModal () {
@@ -150,25 +167,26 @@
         }
         this.closeDialog(this.playerDialog.name)
       },
-
-      removePlayer (player) {
-        this.deletePlayer(player)
-        this.closeDialog('confirmDialog')
+      onClickDeletePlayer (player) {
+        this.selectedPlayer = player
+        this.openDialog('confirmDialog')
+      },
+      onClickEditPlayer (player) {
+        this.playerDialog.title = 'Edit player'
+        this.playerDialog.confirm = 'Edit ' + player.name
+        this.playerDialog.type = DIALOG_TYPE.EDITION
+        this.selectedPlayer = player
+        this.openDialog(this.playerDialog.name)
+      },
+      onClickPage (pageNb) {
+        this.loadPlayers(pageNb)
       },
       openDialog (ref) {
         this.$refs[ref].open()
       },
-      closeDialog (ref) {
-        this.$refs[ref].close()
-      },
-      initializeSelectedPlayer () {
-        this.selectedPlayer = {
-          name: '',
-          ip: '',
-          port: 0,
-          path: null,
-          difficulty: ''
-        }
+      removePlayer (player) {
+        this.deletePlayer(player)
+        this.closeDialog('confirmDialog')
       }
     }
   }
@@ -183,5 +201,10 @@
 
   .panel > * {
     margin: auto;
+  }
+
+  .players-list {
+    overflow-y: scroll;
+    height: 500px;
   }
 </style>
