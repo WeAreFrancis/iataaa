@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import Navbar from './components/Navbar'
-  import ToolBar from './components/ToolBar'
+  import Navbar from './pages/Navbar'
+  import ToolBar from './pages/ToolBar'
   export default {
     name: 'app',
     components: {
@@ -21,15 +21,21 @@
 </script>
 
 <style lang="less">
-  @import 'styles/iataaa';
   @import 'styles/variables';
 
-  #app {
+  .app {
     height: 100%;
   }
 
   #content {
     padding-top: @nav-bar-height;
+    display: flex;
+    height: 100%;
+  }
+
+  .main-component {
+    height: 100%;
+    width: 100%;
   }
 
   #nav-bar {
@@ -41,6 +47,8 @@
   #toolBar {
     background-color: @third-background-color;
     color: @third-color;
-    width: 250px;
+    min-width: @tool-bar-width;
+    width: @tool-bar-width;
+    max-width: @tool-bar-width;
   }
 </style>

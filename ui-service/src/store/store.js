@@ -1,31 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import api from './api'
-import {AI_PLAYER_API} from '../../config/prod.env'
+import playerService from '../service/playerService'
+import * as types from './types'
+import Toasted from 'vue-toasted'
 
 Vue.use(Vuex)
+Vue.use(Toasted)
 
 const state = {
   players: []
 }
 
 const mutations = {
-  API_FAILURE (error) {
-    console.error('ERROR', error)
-  },
-  CREATE_PLAYER (state, player) {
+  [types.CREATE_PLAYER] (state, player) {
     state.players.content.push(player)
     ++state.players.totalElements
   },
-  DELETE_PLAYER (state, player) {
-    let index = state.players.content.indexOf(player)
-    state.players.content.splice(index, 1)
-    --state.players.totalElements
-  },
-  LOAD_PLAYERS (state, players) {
+  [types.LOAD_PLAYER] (state, players) {
     state.players = players
   },
-  UPDATE_PLAYER (state, player) {
+  [types.UPDATE_PLAYER] (state, player) {
     let index = state.players.content.indexOf(player)
     state.players.content[index] = player
   }
@@ -33,24 +27,35 @@ const mutations = {
 
 const actions = {
   createPlayer: ({ commit }, player) => {
-    return api.post(AI_PLAYER_API, player)
-      .then(response => commit('CREATE_PLAYER', response.body))
-      .catch(error => commit('API_FAILURE', error))
+    return playerService.create(player)
+      .then(
+        response => commit(types.CREATE_PLAYER, response.body)
+      )
   },
   deletePlayer: ({ commit }, player) => {
-    return api.delete(AI_PLAYER_API + '/' + player.id)
-      .then(response => commit('DELETE_PLAYER', player))
-      .catch(error => commit('API_FAILURE', error))
+    // TODO : It's better to call loadPlayers action. But how to do ?
+    return playerService.delete(player)
+      .then(
+        response => {
+          let page = (state.players.numberOfElements < 2) ? state.players.number - 1 : state.players.number
+          playerService.getAll(page)
+            .then(
+              response => commit(types.LOAD_PLAYER, response.body)
+            )
+        }
+      )
   },
   loadPlayers: ({ commit }, pageNb) => {
-    return api.get(AI_PLAYER_API + '?page=' + pageNb)
-      .then(response => commit('LOAD_PLAYERS', response.body))
-      .catch(error => commit('API_FAILURE', error))
+    return playerService.getAll(pageNb)
+      .then(
+        response => commit(types.LOAD_PLAYER, response.body)
+      )
   },
-  updatePlayer: (context, [playerId, player]) => {
-    return api.put(AI_PLAYER_API + '/' + playerId, player)
-      .then(response => context.commit('UPDATE_PLAYER', response.body))
-      .catch(error => context.commit('API_FAILURE', error))
+  updatePlayer: ({ commit }, [playerId, player]) => {
+    return playerService.update(playerId, player)
+      .then(
+        response => commit(types.UPDATE_PLAYER, response.body)
+      )
   }
 }
 

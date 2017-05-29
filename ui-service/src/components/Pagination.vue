@@ -49,14 +49,12 @@
 </script>
 
 <style scoped>
-  .button-group {
-    margin: auto;
-  }
-  .disabled {
-    cursor: not-allowed;
-  }
   .pagination {
     display: flex;
+    border-radius: 10px;
+  }
+  .button-group {
+    margin: auto;
   }
   .suspension-points {
     margin: auto;

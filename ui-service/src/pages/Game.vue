@@ -10,7 +10,4 @@
 </script>
 
 <style lang="less" scoped>
-  #game {
-    height: 100%;
-  }
 </style>
