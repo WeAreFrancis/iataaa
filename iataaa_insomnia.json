@@ -1,0 +1,208 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-02-11T13:46:16.802Z",
+	"__export_source": "insomnia.desktop.app:v5.8.4",
+	"resources": [
+		{
+			"_id": "wrk_1f23e646d20c424b99089d4ddf9ec91e",
+			"parentId": null,
+			"modified": 1518290813096,
+			"created": 1518290813096,
+			"name": "iataaa",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_76f623772c5240c9a5e57367a138dfa7",
+			"parentId": "wrk_1f23e646d20c424b99089d4ddf9ec91e",
+			"modified": 1518291663261,
+			"created": 1518290813103,
+			"name": "Base Environment",
+			"data": {},
+			"color": null,
+			"isPrivate": false,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_9d2002c514724562b23fb8008daee338",
+			"parentId": "wrk_1f23e646d20c424b99089d4ddf9ec91e",
+			"modified": 1518290813100,
+			"created": 1518290813100,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"parentId": "wrk_1f23e646d20c424b99089d4ddf9ec91e",
+			"modified": 1518348367192,
+			"created": 1518290911055,
+			"name": "ApiPlayers",
+			"description": "",
+			"environment": {
+				"playersApiUrl": "http://127.0.0.1:8080/api/v1",
+				"player1Id": "df34d542-6f57-4671-b75f-1563994d6e33"
+			},
+			"metaSortKey": -1518290911055,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_380a068030734386a28c190805ceb0a6",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518291692460,
+			"created": 1518290926399,
+			"url": "{{playersApiUrl}}/players",
+			"name": "getAll",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1518290926399,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_1872f7005c3d4e958b6e7a21854eee43",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518292074801,
+			"created": 1518290987862,
+			"url": "{{ playersApiUrl }}/players",
+			"name": "create",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"difficulty\": \"EASY\",\n\t\"name\": \"player1\",\n\t\"ip\": \"127.0.0.1\",\n\t\"port\": 3000,\n\t\"path\": \"/\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_adea3a27e5bb4958be37772847b7a576"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1518290926349,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_da06a37a4313457d976cd56f1d2288df",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518291765642,
+			"created": 1518291256519,
+			"url": "{{ playersApiUrl }}/players/{{player1Id}}",
+			"name": "update",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"difficulty\": \"MEDIUM\",\n\t\"name\": \"player1\",\n\t\"ip\": \"127.0.0.1\",\n\t\"port\": 3000,\n\t\"path\": \"/\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_adea3a27e5bb4958be37772847b7a576"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1518290926299,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_88b1791917c74f3cbc883682a377dca3",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518291752660,
+			"created": 1518291496376,
+			"url": "{{ playersApiUrl }}/players/{{player1Id}}",
+			"name": "delete",
+			"description": "",
+			"method": "DELETE",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"difficulty\": \"MEDIUM\",\n\t\"name\": \"player1\",\n\t\"ip\": \"127.0.0.1\",\n\t\"port\": 3000,\n\t\"path\": \"/\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_adea3a27e5bb4958be37772847b7a576"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1518290926249,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_693a4f55d7ee4e33841ee3202e47ded9",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518292162379,
+			"created": 1518291588760,
+			"url": "{{ playersApiUrl }}/players/{{player1Id}}",
+			"name": "getById",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"difficulty\": \"MEDIUM\",\n\t\"name\": \"player1\",\n\t\"ip\": \"127.0.0.1\",\n\t\"port\": 3000,\n\t\"path\": \"/\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_adea3a27e5bb4958be37772847b7a576"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1518290926199,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_33bd6e5750084eaa8aaceb3362c27d42",
+			"parentId": "fld_dfd7f2da7cc54747a81389b48ed68676",
+			"modified": 1518291948630,
+			"created": 1518291824227,
+			"url": "{{playersApiUrl}}/players?page=0&perPage=1",
+			"name": "getAll: Page 1, PerPage 1",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1518290926374,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		}
+	]
+}

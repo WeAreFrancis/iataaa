@@ -7,7 +7,7 @@ Feature: Put player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to PUT right player.
-    When I set a "PUT" request to "/players/0a"
+    When I set a "PUT" request to "/api/v1/players/0a"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
      """
@@ -36,7 +36,7 @@ Feature: Put player
 
 
   Scenario: I make call to PUT entity without json in body request.
-    When I set a "PUT" request to "/players/0a"
+    When I set a "PUT" request to "/api/v1/players/0a"
     And I send the request
     Then the response status code is 400
     And the aiPlayers data database is:
@@ -46,7 +46,7 @@ Feature: Put player
 
 
   Scenario: I make call to PUT non-existent player.
-    When I set a "PUT" request to "/players/incorrectId"
+    When I set a "PUT" request to "/api/v1/players/incorrectId"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -66,7 +66,7 @@ Feature: Put player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to PUT without name in json.
-    When I set a "PUT" request to "/players/01"
+    When I set a "PUT" request to "/api/v1/players/01"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -85,7 +85,7 @@ Feature: Put player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to PUT without difficulty in json.
-    When I set a "PUT" request to "/players/01"
+    When I set a "PUT" request to "/api/v1/players/01"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -105,7 +105,7 @@ Feature: Put player
 
 
   Scenario: I make call to PUT without ip in json.
-    When I set a "PUT" request to "/players/01"
+    When I set a "PUT" request to "/api/v1/players/01"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -124,7 +124,7 @@ Feature: Put player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to PUT without port in json.
-    When I set a "PUT" request to "/players/01"
+    When I set a "PUT" request to "/api/v1/players/01"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -143,7 +143,7 @@ Feature: Put player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to PUT /aiPlayers with invalid ip.
-    When I set a "PUT" request to "/players/01"
+    When I set a "PUT" request to "/api/v1/players/01"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """

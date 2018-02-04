@@ -1,7 +1,6 @@
 package com.wearefrancis.aiplayer.services.impl;
 
 import com.wearefrancis.aiplayer.domain.AiPlayer;
-import com.wearefrancis.aiplayer.domain.Player;
 import com.wearefrancis.aiplayer.dto.entity.AiPlayerDTOToRead;
 import com.wearefrancis.aiplayer.dto.entity.AiPlayerDTOToWrite;
 import com.wearefrancis.aiplayer.dto.mapper.AiPlayerMapper;
@@ -41,9 +40,9 @@ public class AiPlayerServiceImpl implements AiPlayerService {
 
     @Override
     public void delete(String id) throws NotFoundException {
-        AiPlayer aiPlayer = Optional.ofNullable(aiPlayerRepository.findOne(id))
+        AiPlayer aiPlayer = aiPlayerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("id", id, "Player"));
-        aiPlayerRepository.delete(id);
+        aiPlayerRepository.delete(aiPlayer);
         LOGGER.info("Player is deleted : {}", aiPlayer);
     }
 
@@ -57,7 +56,7 @@ public class AiPlayerServiceImpl implements AiPlayerService {
 
     @Override
     public AiPlayerDTOToRead getById(String playerId) throws NotFoundException {
-        AiPlayer aiPlayer = Optional.ofNullable(aiPlayerRepository.findOne(playerId))
+        AiPlayer aiPlayer = aiPlayerRepository.findById(playerId)
                 .orElseThrow(() -> new NotFoundException("id", playerId, "Player"));
         LOGGER.info("Player is found : {}", aiPlayer);
         return AiPlayerMapper.modelToReadDTO(aiPlayer);

@@ -10,9 +10,6 @@
     <name>iataaa</name>
 
     <modules>
-        <module>registry</module>
-        <module>config</module>
-        <module>gateway</module>
         <module>aiPlayer-service</module>
     </modules>
 </project>
