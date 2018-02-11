@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  common:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.0.0/24
+
+services:
+  checkersmanager-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: iataaa
+      MYSQL_USER: iataaa
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data/checkersmanager-mysql:/var/lib/mysql
+    networks:
+      common:
+        ipv4_address: 172.16.0.25

@@ -11,5 +11,6 @@
 
     <modules>
         <module>aiPlayer-service</module>
+        <module>checkersManager-service</module>
     </modules>
 </project>

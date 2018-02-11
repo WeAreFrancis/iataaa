@@ -32,6 +32,35 @@ services:
       DB_PASSWORD: password
     depends_on:
       - aiplayer-db
+    restart: always
     networks:
       common:
         ipv4_address: 172.16.0.10
+
+  checkersmanager-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: iataaa
+      MYSQL_USER: iataaa
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data/checkersmanager-mysql:/var/lib/mysql
+    networks:
+      common:
+        ipv4_address: 172.16.0.25
+
+  checkersmanager-service:
+    build: ./checkersManager-service
+    environment:
+      DB_IP: 172.16.0.25
+      DB_PORT: 3306
+      DATABASE: iataaa
+      DB_USER: iataaa
+      DB_PASSWORD: password
+    depends_on:
+      - checkersmanager-db
+    restart: always
+    networks:
+      common:
+        ipv4_address: 172.16.0.20
