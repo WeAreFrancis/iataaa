@@ -7,7 +7,7 @@ Feature: Remove player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to DELETE right entity.
-    When I set a "DELETE" request to "/players/0a"
+    When I set a "DELETE" request to "/api/v1/players/0a"
     And I send the request
     Then the response status code is 204
     And the aiPlayers data database is:
@@ -15,7 +15,7 @@ Feature: Remove player
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to DELETE non-existent entity.
-    When I set a "DELETE" request to "/players/incorrectId"
+    When I set a "DELETE" request to "/api/v1/players/incorrectId"
     And I send the request
     Then the response status code is 404
     And the aiPlayers data database is:

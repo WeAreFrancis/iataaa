@@ -7,7 +7,7 @@ Feature: Get All aiPlayers
       | 1a | HARD       | ia2  | toto  | 127.0.0.1 | 8081 | api  |
 
   Scenario: I make call to GET /aiPlayers without query parameters.
-    When I set a "GET" request to "/players"
+    When I set a "GET" request to "/api/v1/players"
     And I send the request
     Then the response status code is 200
     And the "Content-Type" attribute of the response header is "application/json;charset=UTF-8"

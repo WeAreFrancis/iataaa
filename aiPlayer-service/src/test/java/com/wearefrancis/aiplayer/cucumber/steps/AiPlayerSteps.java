@@ -1,10 +1,10 @@
 package com.wearefrancis.aiplayer.cucumber.steps;
 
 import com.wearefrancis.aiplayer.AiPlayerApplication;
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
 import com.wearefrancis.aiplayer.domain.AiPlayer;
 import com.wearefrancis.aiplayer.domain.util.Difficulty;
+import cucumber.api.DataTable;
+import cucumber.api.java.en.Given;
 import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
 import org.springframework.test.context.ContextConfiguration;
 

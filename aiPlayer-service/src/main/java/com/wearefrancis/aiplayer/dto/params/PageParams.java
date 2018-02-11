@@ -3,6 +3,7 @@ package com.wearefrancis.aiplayer.dto.params;
 import com.wearefrancis.aiplayer.dto.DTO;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 

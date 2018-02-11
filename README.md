@@ -2,43 +2,57 @@
 
 Iataaa Server is web platform to manage artificial intelligence game. The name IAtaaa stands for the IA (Intelligence Artificielle in french) acronym and the Yatta japanese word for "We did it".
 
-## Architecture
-We test a microservice architecture with Spring-Cloud. Actually we have only one service. 
-
-### Aiplayer-service.
-You can manage artificial intelligence informations like its ip, port, difficulty etc...
-
-
-### API Gateway 
-Expose (future) multiple services to client. It accessible on http://172.16.0.50:8080.
-
-Service | Location
------- | ------ 
-Aiplayer-service | http://172.16.0.50:8080/aiplayer-service/players |
-
-
-### Registry
-Locate services for the purpose of load balancing and failover of middle-tier servers. We use [Eureka](https://github.com/Netflix/eureka).
-Navigate to http://172.16.0.30:8761 to see registry of services.
-
-### Config
-We use [Spring Config](https://github.com/spring-cloud/spring-cloud-config) for externalized configuration in a distributed system.
-
 ## Getting Started
 ### Requirements
-* Maven
 * Docker
+* Docker-Compose
 
-### Building the project
-Execute in the root directory to build maven project:
+### Indication
+Use `./mvnw` command instead of `mvn` if you haven't Maven.
+
+### Deploy the project on your computer
+Execute in the root directory to build maven project and deploy in docker container:
 ```sh
-$ mvn clean package 
+mvn clean package 
+docker-compose up -d
 ```
-### Deploy the project
-Execute in the root directory to deploy micro-services:
+List of deployed services :
+
+Service name | adress
+------ | ------ 
+aiPlayer database | 172.16.0.15:3306 |
+aiPlayer | 172.16.0.20:8080 |
+
+## Develop mode
+### To work on aiPlayer-service
+Execute in the root directory to run a mysql database:
 ```sh
-$ docker-compose up --build
+cd docker-compose-dev
+docker-compose -f docker-compose.aiplayer.yml up -d
 ```
+To run aiPlayer-service, you should add environment variable :
+
+Environment variable | Value
+------ | ------ 
+DB_IP | 172.16.0.15 |
+DB_PORT | 3306 |
+DB_USER | iataaa |
+DB_PASSWORD | password |
+
+By example, you can run aiPlayer-service like that:
+```sh
+mvn spring-boot:run -DDB_IP=172.16.0.15 -DDB_PORT=3306 -DDB_USER=iataaa -DDB_PASSWORD=password
+```
+Open http://localhost:8080 in your browser
+
+### Swagger documentation
+The api documentation is accessible to http://localhost:8080/swagger-ui.html
+
+## Architecture
+We test a micro-service architecture. Actually we have only one service.
+
+### Aiplayer-service
+You can manage artificial intelligence informations like its ip, port, difficulty etc...
 
 ## Contributor
 * Anthony GODIN <gdn.anthony@gmail.com>

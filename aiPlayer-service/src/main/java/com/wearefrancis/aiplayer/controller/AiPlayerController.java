@@ -6,6 +6,7 @@ import com.wearefrancis.aiplayer.dto.params.PageParams;
 import com.wearefrancis.aiplayer.dto.util.PageableFactory;
 import com.wearefrancis.aiplayer.exception.NotFoundException;
 import com.wearefrancis.aiplayer.services.AiPlayerService;
+import static com.wearefrancis.aiplayer.Path.API_PATH;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("players")
+@RequestMapping(API_PATH + "/players")
 public class AiPlayerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AiPlayerController.class);

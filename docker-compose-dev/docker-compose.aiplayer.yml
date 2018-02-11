@@ -16,22 +16,8 @@ services:
       MYSQL_DATABASE: iataaa
       MYSQL_USER: iataaa
       MYSQL_PASSWORD: password
-
     volumes:
       - ./data/mysql:/var/lib/mysql
     networks:
       common:
         ipv4_address: 172.16.0.15
-
-  aiplayer-service:
-    build: aiPlayer-service
-    environment:
-      DB_IP: 172.16.0.15
-      DB_PORT: 3306
-      DB_USER: iataaa
-      DB_PASSWORD: password
-    depends_on:
-      - aiplayer-db
-    networks:
-      common:
-        ipv4_address: 172.16.0.10

@@ -1,7 +1,7 @@
 Feature: Add aiPlayers
 
   Scenario: I make call to POST /aiPlayers.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -27,7 +27,7 @@ Feature: Add aiPlayers
       | HARD       | ia1  | 127.0.0.1 | 8080 | api  |
 
   Scenario: I make call to POST /aiPlayers without path in json.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -49,7 +49,7 @@ Feature: Add aiPlayers
 
 
   Scenario: I make call to POST without name in json.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -67,7 +67,7 @@ Feature: Add aiPlayers
 
 
   Scenario: I make call to POST without difficulty in json.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -84,7 +84,7 @@ Feature: Add aiPlayers
       | difficulty | name | token | ip | port | path |
 
   Scenario: I make call to POST without ip in json.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -102,7 +102,7 @@ Feature: Add aiPlayers
       | difficulty | name | token | ip | port | path |
 
   Scenario: I make call to POST without port in json.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
@@ -121,7 +121,7 @@ Feature: Add aiPlayers
 
 
   Scenario: I make call to POST /aiPlayers with invalid ip.
-    When I set a "POST" request to "/players"
+    When I set a "POST" request to "/api/v1/players"
     And the "Content-Type" attribute of the request header is "application/json"
     And the request body is :
     """
