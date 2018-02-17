@@ -40,14 +40,14 @@ DB_DATABASE | iataaa |
 DB_USER | iataaa |
 DB_PASSWORD | password |
 
-By example, you can run aiPlayer-service like that:
+For example, you can run aiPlayer-service like that:
 ```sh
 mvn spring-boot:run -DDB_IP=172.16.0.15 -DDB_PORT=3306 -DDB_DATABASE=iataaa -DDB_USER=iataaa -DDB_PASSWORD=password
 ```
 Open http://localhost:8080 in your browser
 
 ### Swagger documentation
-The api documentation is accessible to http://localhost:8080/swagger-ui.html
+The api documentation accessible at http://localhost:8080/swagger-ui.html
 
 ## Architecture
 We test a micro-service architecture. Actually we have only one service.
