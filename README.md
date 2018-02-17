@@ -36,12 +36,13 @@ Environment variable | Value
 ------ | ------ 
 DB_IP | 172.16.0.15 |
 DB_PORT | 3306 |
+DB_DATABASE | iataaa |
 DB_USER | iataaa |
 DB_PASSWORD | password |
 
 By example, you can run aiPlayer-service like that:
 ```sh
-mvn spring-boot:run -DDB_IP=172.16.0.15 -DDB_PORT=3306 -DDB_USER=iataaa -DDB_PASSWORD=password
+mvn spring-boot:run -DDB_IP=172.16.0.15 -DDB_PORT=3306 -DDB_DATABASE=iataaa -DDB_USER=iataaa -DDB_PASSWORD=password
 ```
 Open http://localhost:8080 in your browser
 

@@ -3,7 +3,7 @@ spring:
     name: aiplayer-service
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${DB_IP}:${DB_PORT}/iataaa?useSSL=false
+    url: jdbc:mysql://${DB_IP}:${DB_PORT}/${DB_DATABASE}?useSSL=false
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   jpa:
