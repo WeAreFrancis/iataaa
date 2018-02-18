@@ -9,8 +9,6 @@ import javax.validation.constraints.Size;
 @Data
 public class CheckersGameToReadDTO extends AbstractEntityToReadDTO {
     @NotNull
-    private boolean beginGame;
-    @NotNull
     @Size(min = 1, max = 50)
     private String name;
     @NotNull

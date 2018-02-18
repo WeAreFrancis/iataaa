@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Data
 @javax.persistence.Entity

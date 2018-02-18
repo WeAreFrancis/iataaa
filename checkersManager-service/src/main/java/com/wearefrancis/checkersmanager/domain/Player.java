@@ -15,7 +15,7 @@ import java.util.UUID;
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public class Player extends AbstractEntity implements Entity {
 
-    Player() {
+    public Player() {
         this.token = UUID.randomUUID().toString();
     }
 

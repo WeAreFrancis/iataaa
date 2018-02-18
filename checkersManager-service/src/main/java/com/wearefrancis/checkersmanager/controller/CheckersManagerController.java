@@ -5,9 +5,12 @@ import com.wearefrancis.checkersmanager.dto.entity.Token;
 import com.wearefrancis.checkersmanager.dto.entity.read.CheckersGameToReadDTO;
 import com.wearefrancis.checkersmanager.dto.entity.read.CreatedCheckersGameToReadDTO;
 import com.wearefrancis.checkersmanager.dto.entity.write.CheckersGameToWriteDTO;
-import com.wearefrancis.checkersmanager.dto.entity.write.HumanPlayerToWriteDTO;
 import com.wearefrancis.checkersmanager.dto.params.PageParams;
 import com.wearefrancis.checkersmanager.exception.NotFoundException;
+import com.wearefrancis.checkersmanager.service.CheckersService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +23,21 @@ import static com.wearefrancis.checkersmanager.Path.API_PATH;
 @RequestMapping(API_PATH + "/checkers")
 public class CheckersManagerController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CheckersManagerController.class);
+
+    private CheckersService checkersService;
+
+    public CheckersManagerController(@Autowired CheckersService checkersService) {
+        this.checkersService = checkersService;
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CreatedCheckersGameToReadDTO create(
-            @Valid CheckersGameToWriteDTO checkersGameToWriteDTO,
-            @Valid HumanPlayerToWriteDTO humanPlayerToWriteDTO
+            @RequestBody @Valid CheckersGameToWriteDTO checkersGameToWriteDTO
     ) {
-        return new CreatedCheckersGameToReadDTO();
+        LOGGER.debug("REST request to create checkers game with : {}", checkersGameToWriteDTO);
+        return checkersService.create(checkersGameToWriteDTO);
     }
 
     @GetMapping
