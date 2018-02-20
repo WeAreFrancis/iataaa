@@ -20,7 +20,7 @@ public class CheckersGame extends AbstractEntity implements Entity {
     private Player player1;
     @NotNull
     @ManyToOne
-    private Player player2;
+    private AiPlayer player2;
     @NotNull
     @ManyToOne
     private Player turnPlayer;
